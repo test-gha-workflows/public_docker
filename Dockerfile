@@ -23,3 +23,4 @@ RUN : \
     && cd /tmp \
     && unzip -d /opt slc_cli.zip \
 	&& :
+ENV PATH="$PATH:/opt/slc_cli:/opt/gnu_arm/bin"
