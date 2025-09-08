@@ -30,6 +30,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/simplicity-sdk:${{ env.RELEASE_VERSION }}
+          tags: ghcr.io/${{ github.repository_owner }}/public_docker:${{ env.RELEASE_VERSION }}
           build-args: |
             RELEASE_VERSION=${{ env.RELEASE_VERSION }}
