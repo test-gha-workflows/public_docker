@@ -19,10 +19,11 @@ RUN : \
 		make \
 		python3-pip \
 		libgl1 \
-	&& pip3 install gitpython \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& :
-
+RUN : \
+	&& pip3 install gitpython
+ 
 ADD https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz /tmp/arm-gnu-toolchain.tar.xz
 RUN :\
 	&& cd /tmp \
