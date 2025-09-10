@@ -1,7 +1,11 @@
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+  # push:
+  #   tags:
+  #     - '*'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -17,12 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-      - name: Test
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ env.RELEASE_VERSION }}
+        
       - name: Log in to the container registry
         uses: docker/login-action@v3
         with:
@@ -37,6 +36,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/public_docker:${{ env.RELEASE_VERSION }}
+          tags: ghcr.io/${{ github.repository_owner }}/public_docker:${{ inputs.release_version }}
           build-args: |
-            RELEASE_VERSION=${{ env.RELEASE_VERSION }}
+            RELEASE_VERSION=${{ inputs.release_version }}
