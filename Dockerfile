@@ -1,5 +1,5 @@
 FROM ubuntu:noble
-ARG DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 # ARG RELEASE_VERSION=v2025.6.0
 # ARG SL_STUDIO_BUILD_PATH="/opt/SimplicityStudio"
 # ARG ARM_GCC_DIR=toolchains/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi
@@ -20,10 +20,11 @@ RUN : \
   		python3 \
 		python3-pip \
 		libgl1 \
-	&& rm -rf /var/lib/apt/lists/* \
  	&& :
 
-CMD ["python3", "--version"]
+RUN apt-get install -y python3 python3-pip git && \
+    apt-get clean
+
 RUN pip3 install --no-cache-dir gitpython
  
 ADD https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz /tmp/arm-gnu-toolchain.tar.xz
