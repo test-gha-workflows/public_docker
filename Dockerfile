@@ -46,7 +46,7 @@ RUN : \
 ADD https://github.com/project-chip/zap/releases/download/v2025.01.15/zap-linux-x64.zip /tmp/zap-linux-x64.zip
 RUN : \
 	&& cd /tmp \
-	&& unzip -d /opt zap-linux-x64.zip
+	&& unzip -d /opt zap-linux-x64.zip \
  	&& :
 
 
