@@ -1,4 +1,4 @@
-FROM ubuntu:noble
+FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 # ARG RELEASE_VERSION=v2025.6.0
 # ARG SL_STUDIO_BUILD_PATH="/opt/SimplicityStudio"
