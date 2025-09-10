@@ -20,9 +20,9 @@ RUN : \
 		python3-pip \
 		libgl1 \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& :
-RUN : \
-	&& pip3 install gitpython
+ 	&& :
+
+RUN pip3 install gitpython
  
 ADD https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz /tmp/arm-gnu-toolchain.tar.xz
 RUN :\
@@ -47,6 +47,7 @@ ADD https://github.com/project-chip/zap/releases/download/v2025.01.15/zap-linux-
 RUN : \
 	&& cd /tmp \
 	&& unzip -d /opt zap-linux-x64.zip
+ 	&& :
 
 
 ENV PATH="$PATH:/opt/slc_cli:/opt/gnu_arm/bin:/opt/zap"
