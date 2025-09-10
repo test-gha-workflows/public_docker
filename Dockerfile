@@ -23,6 +23,7 @@ RUN : \
 	&& rm -rf /var/lib/apt/lists/* \
  	&& :
 
+CMD ["python3", "--version"]
 RUN pip3 install --no-cache gitpython
  
 ADD https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz /tmp/arm-gnu-toolchain.tar.xz
